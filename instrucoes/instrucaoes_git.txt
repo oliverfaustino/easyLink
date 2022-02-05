@@ -1,0 +1,113 @@
+-----------------------------------------------------------------------------------------------------
+COMANDO BÁSICOS DE MANIPULAÇÃO DE DIRETÓRIO:
+	
+	pwd
+#mostra em qual local você está, no caso, em qual pasta
+
+-----------------------------------------------------------------------------------------------------
+	
+	ls
+#lista todos os arquivos da pastas
+	ls -l
+#lista os todos os arquivos de forma mais detalhada
+
+-----------------------------------------------------------------------------------------------------
+
+	cd pasta_que_deseja_acessar
+#entra em alguma pasta específica
+	cd ..
+#volta uma pasta. Se eu estou na pasta 
+/g/Downloads/pasta_cr4sh/development/easyLink
+e uso o comando, eu volto para pasta
+/g/Downloads/pasta_cr4sh/development
+
+-----------------------------------------------------------------------------------------------------
+
+	link do repositório:
+https://github.com/oliverfaustino/easyLink.git
+	
+-----------------------------------------------------------------------------------------------------
+
+	git clone link_do_repositório
+#cria uma clonagem do repositório remoto dentro da sua máquina. Deve-se selecionar a pasta que irá
+ocorrer a clonagem (a forma mais fácil é ir até a pasta, clicar com o botão direito 
+e clicar em "git bash here". Git Bash abrirá já na pasta selecionada)
+
+-----------------------------------------------------------------------------------------------------
+
+configuração de usuário e email no git:
+
+	git config --global user.name "o_nome_de_usuário"
+#usado para "cadastrar" o usuário dentro do git
+
+-----------------------------------------------------------------------------------------------------
+
+	git config --global user.name "email_cadastrado_no_github"
+#usado para "cadastrar" o email dentro do git (deve-se usar o email da sua conta no github)
+
+-----------------------------------------------------------------------------------------------------
+
+	git config -l 
+#listar as variáveis. Lá veremos todas as variáveis do git. 
+Pode ser usado para conferir "user.name" e "user.email" 
+
+
+-----------------------------------------------------------------------------------------------------
+
+MANIPULAÇÃO DO REPOSITÓRIO:
+
+	git status
+#usado para ver os status do repositório local em relação com o repositório remoto.
+Caso tenha alguma alteração no repositório local, que NÃO HÁ no remoto, git status retornará algo
+semelhante à isso:
+
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        "aquivo_que_não_foi_commitado"
+
+-----------------------------------------------------------------------------------------------------
+
+	git add .
+#usado para pegar esse arquivo que não foi commitado (mostrado no git status) e lançar-lo para área
+de stage. O comando retornará a opção de digitar uma nova linha. Para conferir se o item foi
+posto na área de stage, use o git status novamente. Caso ele tenha sido enviado,
+receberá algo similar à isso:
+
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   nome_do_arquivo_enviado_pro_stage
+
+-----------------------------------------------------------------------------------------------------
+
+	git restore --staged .
+#volta todos os arquivos no stage, para a classificação "não commitado".
+
+-----------------------------------------------------------------------------------------------------
+
+	git commit -m ""
+#adiciona um comentário ao objeto que será commitado. Deve-se por o comentário entre as aspas e
+detalhar o máximo possível das alterações e objetivos com esse commit. O comando enviará umas linhas.
+Caso for bem sucessido, terá em algumas das linhas algo similar à isso:
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 arquivo_que_foi_dado_um_comentário
+
+#os valores numéricos podem mudar naturalmente, dependendo do que foi escrito (eu imagino).
+
+-----------------------------------------------------------------------------------------------------
+
+	git push origin main
+#envia o arquivo posto em stage para o repositório remoto. Logo após, deve-se abrir uma janela,
+onde pedirá seu token ou senha (senha = token). Não será possível enviar
+sem que seu repositório local esteja atualizado. 
+	
+	git pull
+#atualiza o repositório local.
+
+-----------------------------------------------------------------------------------------------------
