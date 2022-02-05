@@ -1,0 +1,70 @@
+-----------------------------------------------------------------------------------------------------
+
+FORMATAÇÃO:
+
+
+# Iremos sempre usar uma sigla para do que se trata aquilo (variável, função, lista, etc)
+ e se possível, uma sigla que representa o tipo daquilo, caso tenha (string, inteiro, boleano, float,
+ etc) veja o exemplo
+
+	vs_nome_variavel = "Hellou World"
+
+v = abreviação para "variável"
+s = abreviação para "string"
+
+ usando sempre a separação por underline _
+ letras sempre em minúsculas e sem acentos ou caracteres especiais
+
+-----------------------------------------------------------------------------------------------------
+	
+NOME PARA ARQUIVOS:
+
+# Quando finalizado um arquivo (seja um programa em .py ou até mesmo uma imagem)
+ devemos por um resumo objetivo do que se trata.
+
+ usando sempre a separação por underline _
+ letras sempre em minúsculas e sem acentos ou caracteres especiais
+
+ def f_copiar_link() #exemplo de uma função. Com o nome já é possível saber que é uma função,
+ por causa do "f_" e o que se trata tal função, pelo seu nome seguinte "copiar_link"
+
+# Esse mesmo nome pode ser usado para quando gerado o arquivo .py
+
+-----------------------------------------------------------------------------------------------------
+
+COMENTÁRIOS OPORTUNOS
+
+ Assim como eu, você já deve ter se perguntado: Para que eu usei esse programa mesmo?
+ Sim, essa pergunta sempre aparece. De fato precisamos colocar comentários ao longo do script
+ e/ou programa para sabermos sua utilidade, e não deixe de pensar no futuro, 
+ faça um script que seja reutilizável.
+
+ Os comentários podem vir logo no cabeçalho do programa, algo como:
+
+ “# Script para executar automaticamente meus programas”
+
+ E lembretes ao longo do código:
+
+ “# Termina de por o link correto”
+
+ Quanto mais comentários melhor, mas claro, que eles sejam oportunos, para assim, o código permanecer
+ acessível futuramente por você ou outra pessoa que for utilizá-lo.
+
+
+-----------------------------------------------------------------------------------------------------
+
+CABEÇALHO
+
+# É importante deixar um cabeçalho, até mesmo para nos guiar e guiar quem irá ler nossos comandos.
+Veja abaixo os itens necessários de por num cabeçalho. Não se prenda apenas à isso, se há algo que
+achou interessante por no cabeçalho do seu programa, ponha!
+
+# Programador: (nome do indivíduo que fez o programa)
+# Programa: (nome do programa)
+# Objetivo: (objetivo do programa)
+# Destino: (onde ele irá atuar. No nosso caso, no easyLink)
+# Versão: (versão do programa. Atualmente estamos na versão alpha)
+# Começo: (quando começou a ser criado)
+# Fim: (quando terminou sua criação da versão atual)
+
+-----------------------------------------------------------------------------------------------------
