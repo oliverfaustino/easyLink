@@ -36,18 +36,19 @@ vs_link_oper_de_comp = "https://www.pythonprogressivo.net/2018/02/Operadores-Com
 #s = abreviacao para string
 #vs = abreviacao para variavel do tipo string
 #link = link  
-#def = função 
+#def = funcao
 #com = comentarios
 #oper = operadores 
 #comp = comparação
+#f = funcao
 
 
 #Função que ira printa os links:
-def teste(site):
+def f_copiar_link(site):
  print(site)  
 
 #Comando que executara a funcao (escolha o link  e digite entre os parenteses)
-teste(vs_if)
+f_copiar_link(vs_link_com_em_Python)
 
 
 
