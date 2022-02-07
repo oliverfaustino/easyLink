@@ -8,6 +8,8 @@
 
 #Invocando o modulo tk (pra janela grafica )
 import tkinter as tk
+import os
+
 
 #Criando uma janela inicial e dando um nome
 v_janela = tk.Tk()
@@ -29,7 +31,8 @@ v_posy = vi_altura_screen/2 - vi_altura/2
 v_janela.geometry("%dx%d+%d+%d"%(vi_largura,vi_altura,v_posx,v_posy))
 
 #importando a v_imagem que será usada na jav_janela
-v_imagem= tk.PhotoImage(file="Dica1.png")
+v_pasta_tela=os.path.dirname(__file__)
+v_imagem= tk.PhotoImage(file=v_pasta_tela+"\\Dica1.png")
 v_w = tk.Label(v_janela,image=v_imagem)
 
 #criando a função que enviara o link 

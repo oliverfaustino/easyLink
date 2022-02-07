@@ -21,14 +21,17 @@ def f_criacao_janela_about():
     v_janela_about['bg'] = '#0e2634'
     v_janela_about.geometry('{}x{}'.format(win_width, win_height))
     v_janela_about.title("Janela About")
+
     # comandos para a importação e configuração da logo
     v_pastaApp=os.path.dirname(__file__)
-    v_img_logo=PhotoImage(file=v_pastaApp+"\\lg.png")
+    v_img_logo=PhotoImage(file=v_pastaApp+"\\logo_easylink.png")
     v_config_imagem = Label(v_janela_about, image=v_img_logo,borderwidth=0).pack()
+
     # comandos para a implementação do subtitulo "SOBRE"
     vs_subtitulo_sobre = Label(v_janela_about, text="SOBRE", bg='#0e2634', fg="white",font="Gabriela 24 bold")
     vs_subtitulo_sobre.config(anchor=CENTER)
     vs_subtitulo_sobre.pack(pady=10)
+    
     # comandos para a implementação da descrição "SOBRE"
     vs_desc_sobre = Label(
     v_janela_about,
