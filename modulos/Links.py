@@ -1,10 +1,9 @@
-# Programador: Samuca
-# Programa: Programa de link
+# Programador: Samuel Nascimento (Samuca)
+# Programa: Programa responsavel pelos link
 # Objetivo: armazenar links e depois enviar o link que foi solicitado 
-# Destino:  easyLink
 # Versão: alpha
 # Começo: 03/02/2022
-# Fim: 05/02/2022
+
 
 
 
@@ -33,6 +32,66 @@ vs_link_while = "https://www.devmedia.com.br/python-estrutura-de-repeticao-while
 vs_link_if_else = "https://pt.m.wikipedia.org/wiki/Estrutura_de_sele%C3%A7%C3%A3o"
 vs_link_oper_de_comp = "https://www.pythonprogressivo.net/2018/02/Operadores-Comparacao-Python.html?m=1"
 
+temas = (     "python",
+              "print",
+              "sintaxe",
+              "comentarios_python",
+              "tipo_de_dados",
+              "numeros_em_python",
+              "conversao",
+              "boleanos",
+              "lista",
+              "tuplas",
+              "conjuntos",
+              "dicionario",
+              "loop",
+              "funcoes",
+              "variavel",
+              "input",
+              "string",
+              "float",
+              "integer",
+              "while",
+              "if_else",
+              "oper_de_comp"
+
+         )
+
+links =(    "https://olhardigital.com.br/2021/10/04/tira-duvidas/o-que-e-para-que-serve-o-python/",
+            "http://www.bosontreinamentos.com.br/programacao-em-python/guia-basico-da-funcao-print-em-python/#:~:text=A%20fun%C3%A7%C3%A3o%20print()%20em,dentro%20de%20arquivos%20de%20texto"   
+            "https://pt.m.wikipedia.org/wiki/Sintaxe_e_sem%C3%A2ntica_de_Python"
+            "http://excript.com/python/comentarios-em-python.html"       
+            "http://excript.com/python/tipos-de-dados-python.html"  
+            "https://algoritmosempython.com.br/cursos/programacao-python/tipos-basicos/"  
+            "https://www.digitalocean.com/community/tutorials/how-to-convert-data-types-in-python-3-pt"
+            "https://panda.ime.usp.br/pensepy/static/pensepy/06-Selecao/selecao.html"
+            "https://algoritmosempython.com.br/cursos/programacao-python/listas/"
+            "https://blog.betrybe.com/tecnologia/tuplas-em-python/"
+            "https://pythonhelp.wordpress.com/2013/06/18/conjuntos-em-python/"
+            "https://kenzie.com.br/blog/dicionario-python/"
+            "https://blog.grancursosonline.com.br/python-loop/"
+            "https://panda.ime.usp.br/pensepy/static/pensepy/05-Funcoes/funcoes.html#:~:text=Em%20Python%2C%20uma%20fun%C3%A7%C3%A3o%20%C3%A9,imaginamos%20uma%20solu%C3%A7%C3%A3o%20do%20problema"
+            "https://blog.ffelix.eti.br/como-criar-variaveis-em-python/"
+            "http://www.bosontreinamentos.com.br/programacao-em-python/entrada-de-dados-em-python-com-funcao-input/"
+            "https://www.devmedia.com.br/tipos-de-dados-em-python-string/40669"
+            "https://docs.python.org/pt-br/3/tutorial/floatingpoint.html"
+            "https://panda.ime.usp.br/pensepy/static/pensepy/02-Conceitos/conceitos.html"
+            "https://www.devmedia.com.br/python-estrutura-de-repeticao-while/38546"
+            "https://pt.m.wikipedia.org/wiki/Estrutura_de_sele%C3%A7%C3%A3o"
+            "https://www.pythonprogressivo.net/2018/02/Operadores-Comparacao-Python.html?m=1"
+
+
+
+           
+
+
+    
+         )
+
+
+
+
+
 #v = v = abreviação para "variavel
 #s = abreviacao para string
 #vs = abreviacao para variavel do tipo string
@@ -49,7 +108,7 @@ def f_copiar_link(site):
  print(site)  
 
 #Comando que executara a funcao (escolha o link  e digite entre os parenteses)
-f_copiar_link(vs_link_com_em_Python)
+f_copiar_link()
 
 
 
