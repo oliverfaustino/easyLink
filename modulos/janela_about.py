@@ -9,9 +9,13 @@
 # ativar os comandos do Tkinter
 from tkinter import *
 import os
+#
 
+def f_fechar_janela():
+    v_tela.destroy()
 
 def f_about(p_largura= 800, p_altura= 600, p_imagem= "\\logo_easylink.png"):
+    global v_tela
     v_tela = Tk()
     #  CONSTANT
     CAMINHO_ARQUIVO=os.path.dirname(__file__)
@@ -56,10 +60,12 @@ def f_about(p_largura= 800, p_altura= 600, p_imagem= "\\logo_easylink.png"):
     vs_desc_sobre.pack()
 
     # Ir para o dashboard
-    a_about= Button(v_tela,image=v_img_interrogacao,command=print('oi'),borderwidth=0)
+    a_about= Button(v_tela,image=v_img_interrogacao,command=f_fechar_janela,borderwidth=0)
     a_about.pack(pady=30)
+    a_about.place(relx= 0.93, rely= 0.03)
     #comando para manter a janela exibida
     v_tela.mainloop()
     return
 if __name__ == '__main__':
+    v_tela = Tk()
     f_about()
