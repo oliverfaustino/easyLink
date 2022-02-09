@@ -1,6 +1,6 @@
 from cgitb import text
 from tkinter import *
-#from modulos.janela_about import *
+from modulos.janela_about import *
 import os
 import pyperclip
 
@@ -8,7 +8,7 @@ import pyperclip
 
 def f_fechar_janela():
     v_tela.destroy()
-    #f_about()
+    f_about()
 
 def f_dashboard(p_largura= 800, p_altura= 600):
     global v_tela 
