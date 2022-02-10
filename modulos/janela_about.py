@@ -9,10 +9,12 @@
 # ativar os comandos do Tkinter
 from tkinter import *
 import os
-#
+#from modulos.dashboard import f_dashboard
 
 def f_fechar_janela():
-    v_tela.destroy()
+    v_tela.withdraw()
+    #f_dashboard()
+    pass
 
 def f_about(p_largura= 800, p_altura= 600, p_imagem= "\\logo_easylink.png"):
     global v_tela

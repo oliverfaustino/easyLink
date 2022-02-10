@@ -36,6 +36,7 @@ def f_splash_screen(p_largura= 700, p_altura= 350, p_imagem= "\\img_splash_scree
     #Criar a tela
     v_tela.after(p_time, f_fechar_janela)
     v_tela.title("Splash Screen")
+    v_tela.overrideredirect(True)
     v_tela.wm_resizable(width=False, height=False) 
 
     # resolução do nosso sistema (do meu pc )
@@ -53,7 +54,7 @@ def f_splash_screen(p_largura= 700, p_altura= 350, p_imagem= "\\img_splash_scree
     v_img_splash=PhotoImage(file= v_imagem)
 
     #Label
-    vs_label_img=Label(v_tela,image=v_img_splash)
+    vs_label_img=Label(v_tela,image=v_img_splash, borderwidth=0)
     vs_label_img.place(x=0,y=0)
     mainloop()
     return
