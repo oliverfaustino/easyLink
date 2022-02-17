@@ -5,6 +5,7 @@
 
 from tkinter import *
 from tkinter import ttk
+from tkinter.messagebox import IGNORE
 from modulos.janela_about import *
 import os
 import pyperclip
@@ -64,8 +65,21 @@ def f_img_link():
 
     return'''
 
+    # função para abrir o link no navegador
+def f_abrir_link(p_link):
+    webbrowser.open(p_link)
+
+    # função para copiar o link para área de transferência
+def f_copiar_link(p_link):
+    pyperclip.copy(p_link)
+
     # Função que criará as configurações do que aparecerá no combobox.
 def f_cb_links(p_nome_bt, p_tema, p_relx, p_rely, p_relwidth, p_relheight):
+    
+    CAMINHO_ARQUIVO=os.path.dirname(__file__)
+    v_img_navegar = CAMINHO_ARQUIVO+'/navegar.png'
+    v_img_navegar = PhotoImage(file= v_img_navegar)
+
     # parâmetros em variáveis
     p_nome_bt = p_nome_bt
     p_tema = p_tema 
@@ -76,24 +90,19 @@ def f_cb_links(p_nome_bt, p_tema, p_relx, p_rely, p_relwidth, p_relheight):
         
     # Chamar o tema dentro do dicionário e mostrar-lo na tela
     link = dic_links[p_tema]
-    lb_link = Label(v_tela, text= link, font=('BatangChe 10 bold'), fg= '#ffffff', bg= '#3d72cc')
+    lb_link = Label(v_tela, text= link, font=('BatangChe 8 bold'), fg= '#ffffff', bg='#35879c')
     lb_link.place(relx= 0.10, rely=0.55, relwidth= 0.8, relheight= 0.05)
-    
-    # função para copiar o link para área de transferência
-    def f_copiar_link(p_link = link):
-        pyperclip.copy(p_link)
-    # Botão para copiar o link
-    bt_copiar_link = Button(v_tela, text= "Clique para copiar o link", command= f_copiar_link, font=('BatangChe 10 bold'), fg= '#ffffff', bg= '#288f3d')
-    bt_copiar_link.place(relx= 0.08, rely= 0.88, relwidth= 0.4, relheight=0.08)
 
-    # função para abrir o link no navegador
-    def f_abrir_link(p_link = link):
-        webbrowser.open(p_link)
+    # Botão para copiar o Link
+    bt_copiar_link = Button(v_tela, text= "Copiar", command= partial(f_copiar_link, link), font=('BatangChe 10 bold'), fg= '#ffffff', bg='#0e2634')
+    bt_copiar_link.place(relx= 0.15, rely= 0.80, relwidth= 0.3, relheight=0.07)
+
     # Botão para abrir o link no navegador
-    bt_abrir_link = Button(v_tela, text= "Clique para abrir o link no navegador", command= f_abrir_link, font=('BatangChe 10 bold'), fg= '#ffffff', bg= '#8a2534')
-    bt_abrir_link.place(relx= 0.53, rely=0.88, relwidth= 0.4, relheight=0.08)
-    
+    bt_copiar_link = Button(v_tela, text= 'Navegar', command= partial(f_abrir_link, link), font=('BatangChe 10 bold'), fg= '#ffffff', bg='#0e2634')
+    bt_copiar_link.place(relx= 0.55, rely= 0.80, relwidth= 0.3, relheight=0.07)
+
     return
+
 
 def f_dashboard(p_largura= 800, p_altura= 600):
 
@@ -102,30 +111,28 @@ def f_dashboard(p_largura= 800, p_altura= 600):
     
     #  CONSTANT
     CAMINHO_ARQUIVO=os.path.dirname(__file__)
-    v_img_logo = CAMINHO_ARQUIVO+"\\logo_easylink.png"
-    v_img_interrogacao = CAMINHO_ARQUIVO+"\\interrogacao.png"
-    
+    v_img_interrogacao = CAMINHO_ARQUIVO+"/interrogacao.png"
+    v_img_background= CAMINHO_ARQUIVO+ "/background_dashboard.png"
     # Imagens
-    v_img_logo=PhotoImage(file=v_img_logo)
     v_img_interrogacao=PhotoImage(file= v_img_interrogacao)
-    
+    v_img_background=PhotoImage(file= v_img_background)
     # Propriedades do Dashboard
     v_largura = p_largura
     v_altura = p_altura
     v_tela.wm_resizable(width=False, height=False) 
-    v_tela['bg'] = '#0e2634'
+    #v_tela['bg'] = '#0e2634'
     v_tela.geometry('{}x{}'.format(v_largura, v_altura))
     v_tela.title("easyLink")
+    
+    # Colocar as imgs
+    Label(v_tela,image=v_img_background, borderwidth=0).pack()
     # Calculos para centralizar a tela
     v_largura_screen = v_tela.winfo_screenwidth()
     v_altura_screen = v_tela.winfo_screenheight() 
     v_posx = v_largura_screen/2 - v_largura/2 
     v_posy = v_altura_screen/2 - v_altura/2
     v_tela.geometry("%dx%d+%d+%d"%(v_largura,v_altura,v_posx,v_posy))
-    # Logo centralizada na tela
-    Label(v_tela, image=v_img_logo,borderwidth=0).pack()
 
-    # Função que pegará a resposta da combobox e mandará os parâmetros para a f_cb_links (função dos botões dos link)
     def f_cb_dashboard_resposta(): 
         cb_dashboard_resposta = cb_dashboard.get()
         f_cb_links(cb_dashboard_resposta, cb_dashboard_resposta, 0.09, 0.30, 0.4, 0.05)
@@ -135,11 +142,11 @@ def f_dashboard(p_largura= 800, p_altura= 600):
     cb_dashboard = ttk.Combobox(v_tela, values=l_temas)
     cb_dashboard.set('Sobre o Python')
     cb_dashboard.place(relx=0.35, rely=0.3, relwidth= 0.3, relheight=0.05)
-    bt_cb_dashboard= Button(v_tela, text= "Clique aqui para receber o resultado da escolha", command= f_cb_dashboard_resposta, font=('BatangChe 10 bold'), fg= '#ffffff', bg= '#3d72cc')
-    bt_cb_dashboard.place(relx=0.25, rely=0.4, relwidth= 0.5, relheight=0.06)
+    bt_cb_dashboard= Button(v_tela, text= 'Enter', command= f_cb_dashboard_resposta, font=('BatangChe 10 bold'), fg= '#ffffff', bg='#0e2634')
+    bt_cb_dashboard.place(relx=0.40, rely=0.4, relwid= 0.2,relheight=0.06)
 
     # Ir para a janela about
-    bt_about= Button(v_tela,image=v_img_interrogacao,command= f_fechar_janela,borderwidth=0)
+    bt_about= Button(v_tela,image=v_img_interrogacao,command= f_fechar_janela,borderwidth=0, bg='#0e2634')
     bt_about.pack(pady=30)
     bt_about.place(relx= 0.93, rely= 0.03)
     v_tela.mainloop()
@@ -147,7 +154,12 @@ def f_dashboard(p_largura= 800, p_altura= 600):
     return
 
 
+
+
 # JANELA ABOUT
+
+
+
 
 
 def f_about(p_largura= 800, p_altura= 600, p_imagem= "\\logo_easylink.png"):
@@ -163,7 +175,7 @@ def f_about(p_largura= 800, p_altura= 600, p_imagem= "\\logo_easylink.png"):
     v_tela_about['bg'] = '#0e2634'
     v_tela_about.geometry('{}x{}'.format(v_largura, v_altura))
     v_tela_about.title("About easyLink")
-        # resolução do nosso sistema (do meu pc )
+    # resolução do nosso sistema (do meu pc )
     v_largura_screen = v_tela_about.winfo_screenwidth()
     v_altura_screen = v_tela_about.winfo_screenheight() 
 
@@ -175,9 +187,10 @@ def f_about(p_largura= 800, p_altura= 600, p_imagem= "\\logo_easylink.png"):
     v_tela_about.geometry("%dx%d+%d+%d"%(v_largura,v_altura,v_posx,v_posy))
     
     # comandos para a importação e configuração da logo
-    v_img_logo=PhotoImage(file=CAMINHO_ARQUIVO+"\\logo_easylink.png")
-    v_img_interrogacao=PhotoImage(file= CAMINHO_ARQUIVO+"\\interrogacao.png")
-    v_config_imagem = Label(v_tela_about, image=v_img_logo,borderwidth=0).pack()
+    v_img_logo=PhotoImage(file=CAMINHO_ARQUIVO+"/logo_easylink.png")
+    v_img_background= PhotoImage(file= CAMINHO_ARQUIVO+ "/background_about.png")
+    v_img_interrogacao=PhotoImage(file= CAMINHO_ARQUIVO+"/interrogacao.png")
+    v_config_imagem = Label(v_tela_about, image=v_img_background).pack()
 
     # comandos para a implementação do subtitulo "SOBRE"
     vs_subtitulo_sobre = Label(v_tela_about, text="SOBRE", bg='#0e2634', fg="white",font="Gabriela 24 bold")
@@ -188,7 +201,10 @@ def f_about(p_largura= 800, p_altura= 600, p_imagem= "\\logo_easylink.png"):
     vs_desc_sobre = Label(
     v_tela_about,
     wraplength=v_largura, 
-    text="O Software 'EasyLink' é um pequeno programa que envolve conteúdos sobre programação, ainda está em fase de desenvolvimento e teste.\nO intuito do projeto é dar ao usuário o poder de tirar duvidas e adquirir conhecimento de forma mais rápida e objetiva, através de links de páginas confiáveis.\nNos links são  compartilhados ao usuário de forma rápida e clara a explicação do conteúdo desejado, sem risco de vírus em sua máquina, graças a filtragem feita pelo programa.\nNa plataforma contém assuntos sobre uma das principais linguagem de programação, o Python.\nO programa é  destinado para quem quer aprender à programar ou ter alguma noção da linguagem que contém do programa.", 
+    text='''O Software "EasyLink" é um pequeno programa que envolve conteúdos sobre programação, que ainda está em fase de desenvolvimento e teste.
+O intuito do projeto é dar ao usuário o poder de tirar dúvidas e adquirir conhecimento de forma mais rápida e objetiva, através de links de páginas confiáveis. Nos links são compartilhados ao usuário de forma rápida e clara a explicação do conteúdo desejado, sem risco de vírus em sua máquina, graças à filtragem feita pelo programa.
+Na plataforma contém assuntos sobre uma das principais linguagens de programação, o Python.
+O programa é destinado para quem quer aprender à programar ou ter alguma noção da linguagem que contém no programa.''', 
     bg='#0e2634', 
     fg="white",
     font="Gabriela 12 ")
@@ -200,7 +216,7 @@ def f_about(p_largura= 800, p_altura= 600, p_imagem= "\\logo_easylink.png"):
         f_dashboard()
 
     # Ir para o dashboard
-    a_about= Button(v_tela_about,image=v_img_interrogacao,command=f_fechar_janela,borderwidth=0)
+    a_about= Button(v_tela_about,image=v_img_interrogacao,command=f_fechar_janela,borderwidth=0, bg='#0e2634')
     a_about.pack(pady=30)
     a_about.place(relx= 0.93, rely= 0.03)
     #comando para manter a janela exibida

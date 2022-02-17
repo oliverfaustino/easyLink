@@ -16,7 +16,7 @@ def f_fechar_janela():
     #f_dashboard()
     pass
 
-def f_about(p_largura= 800, p_altura= 600, p_imagem= "\\logo_easylink.png"):
+def f_about(p_largura= 800, p_altura= 600, p_imagem= "/logo_easylink.png"):
     global v_tela
     v_tela = Tk()
     #  CONSTANT
@@ -41,8 +41,8 @@ def f_about(p_largura= 800, p_altura= 600, p_imagem= "\\logo_easylink.png"):
     v_tela.geometry("%dx%d+%d+%d"%(v_largura,v_altura,v_posx,v_posy))
     
     # comandos para a importação e configuração da logo
-    v_img_logo=PhotoImage(file=CAMINHO_ARQUIVO+"\\logo_easylink.png")
-    v_img_interrogacao=PhotoImage(file= CAMINHO_ARQUIVO+"\\interrogacao.png")
+    v_img_logo=PhotoImage(file=CAMINHO_ARQUIVO+"/logo_easylink.png")
+    v_img_interrogacao=PhotoImage(file= CAMINHO_ARQUIVO+"/interrogacao.png")
     v_config_imagem = Label(v_tela, image=v_img_logo,borderwidth=0).pack()
 
     # comandos para a implementação do subtitulo "SOBRE"

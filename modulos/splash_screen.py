@@ -23,7 +23,7 @@ def f_fechar_janela():
     v_tela.destroy()
     return
 
-def f_splash_screen(p_largura= 700, p_altura= 350, p_imagem= "\\img_splash_screen.png", p_time= 6000):
+def f_splash_screen(p_largura= 700, p_altura= 350, p_imagem= "/img_splash_screen.png", p_time= 1000):
     
     #  CONSTANT
     CAMINHO_ARQUIVO=os.path.dirname(__file__)
