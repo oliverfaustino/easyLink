@@ -5,13 +5,11 @@
 
 from tkinter import *
 from tkinter import ttk
-from tkinter.messagebox import IGNORE
-from modulos.janela_about import *
 import os
 import pyperclip
 from functools import partial
 import webbrowser
-import random
+
 
 l_temas = ("Sobre o Python","Sintaxe","Variáveis","print()","input()","Comentarios em Python","Números em Python","Tipos de Dados", "Tipos de Dados: string", "Tipos de Dados: integer", "Tipos de Dados: boleanos", "Tipos de Dados: float","Conversão de Dados","Operadores de Comparação","Tuplas","Listas","Dicionários","Conjuntos","Loop","Funções","if e else","while")
 
@@ -39,31 +37,14 @@ dic_links = {
             "if e else":"https://pt.m.wikipedia.org/wiki/Estrutura_de_sele%C3%A7%C3%A3o",  
             "Operadores de Comparação": "https://www.pythonprogressivo.net/2018/02/Operadores-Comparacao-Python.html?m=1"}
 
-'''def f_random_temas():
-    l_random_temas = []
-    while len(l_random_temas) <3:
-        v_temas_random= random.choice(l_temas)
-        l_random_temas.append(v_temas_random)
 
-    return l_random_temas'''
+
+
 
 def f_fechar_janela():
     v_tela.destroy()
     f_about()
 
-'''l_random_temas = ['print()', 'Variáveis', 'Sobre o Python']
-def f_img_link():
-
-    #importando a v_imagem que será usada na jav_tela
-    v_pasta_tela=os.path.dirname(__file__)
-    v_imagem=PhotoImage(file=v_pasta_tela+"\\Variáveis.png")
-    v_w = Label(v_tela,image=v_imagem)
-    
-    #criando o botao (no caso ai a propria v_imagemsera o botao)
-    v_botao= Button(v_tela,image=v_imagem,command= print('oi'))
-    v_botao.pack(pady=30)
-
-    return'''
 
     # função para abrir o link no navegador
 def f_abrir_link(p_link):
@@ -91,7 +72,7 @@ def f_cb_links(p_nome_bt, p_tema, p_relx, p_rely, p_relwidth, p_relheight):
     # Chamar o tema dentro do dicionário e mostrar-lo na tela
     link = dic_links[p_tema]
     lb_link = Label(v_tela, text= link, font=('BatangChe 8 bold'), fg= '#ffffff', bg='#35879c')
-    lb_link.place(relx= 0.10, rely=0.55, relwidth= 0.8, relheight= 0.05)
+    lb_link.place(relx= 0.10, rely=0.70, relwidth= 0.8, relheight= 0.05)
 
     # Botão para copiar o Link
     bt_copiar_link = Button(v_tela, text= "Copiar", command= partial(f_copiar_link, link), font=('BatangChe 10 bold'), fg= '#ffffff', bg='#0e2634')
@@ -113,9 +94,15 @@ def f_dashboard(p_largura= 800, p_altura= 600):
     CAMINHO_ARQUIVO=os.path.dirname(__file__)
     v_img_interrogacao = CAMINHO_ARQUIVO+"/interrogacao.png"
     v_img_background= CAMINHO_ARQUIVO+ "/background_dashboard.png"
+    v_img_dica_random= CAMINHO_ARQUIVO+ "/Random.png"
+    v_img_dica_turtle= CAMINHO_ARQUIVO+ "/Turtle.png"
+    v_img_dica_curso_python= CAMINHO_ARQUIVO+ "/Curso Python.png"
     # Imagens
     v_img_interrogacao=PhotoImage(file= v_img_interrogacao)
     v_img_background=PhotoImage(file= v_img_background)
+    v_img_dica_random=PhotoImage(file= v_img_dica_random)
+    v_img_dica_turtle=PhotoImage(file= v_img_dica_turtle)
+    v_img_dica_curso_python=PhotoImage(file= v_img_dica_curso_python)
     # Propriedades do Dashboard
     v_largura = p_largura
     v_altura = p_altura
@@ -133,7 +120,8 @@ def f_dashboard(p_largura= 800, p_altura= 600):
     v_posy = v_altura_screen/2 - v_altura/2
     v_tela.geometry("%dx%d+%d+%d"%(v_largura,v_altura,v_posx,v_posy))
 
-    def f_cb_dashboard_resposta(): 
+
+    def f_cb_resposta(event): 
         cb_dashboard_resposta = cb_dashboard.get()
         f_cb_links(cb_dashboard_resposta, cb_dashboard_resposta, 0.09, 0.30, 0.4, 0.05)
         return
@@ -141,16 +129,34 @@ def f_dashboard(p_largura= 800, p_altura= 600):
     # Cria combo box
     cb_dashboard = ttk.Combobox(v_tela, values=l_temas)
     cb_dashboard.set('Sobre o Python')
-    cb_dashboard.place(relx=0.35, rely=0.3, relwidth= 0.3, relheight=0.05)
-    bt_cb_dashboard= Button(v_tela, text= 'Enter', command= f_cb_dashboard_resposta, font=('BatangChe 10 bold'), fg= '#ffffff', bg='#0e2634')
-    bt_cb_dashboard.place(relx=0.40, rely=0.4, relwid= 0.2,relheight=0.06)
+    cb_dashboard.place(relx=0.35, rely=0.49, relwidth= 0.3, relheight=0.05)
+    cb_dashboard.bind('<<ComboboxSelected>>' ,f_cb_resposta)
 
     # Ir para a janela about
     bt_about= Button(v_tela,image=v_img_interrogacao,command= f_fechar_janela,borderwidth=0, bg='#0e2634')
     bt_about.pack(pady=30)
     bt_about.place(relx= 0.93, rely= 0.03)
-    v_tela.mainloop()
+    
 
+    # Botões das dicas
+    img_dicas_1 = Label(v_tela, image = v_img_dica_random,bg='#0e2634', cursor="hand2")
+    img_dicas_1.pack()
+    img_dicas_1.place(relx= 0.12, rely=0.23, relwidth= 0.22, relheight= 0.22)
+    img_dicas_1.bind("<Button-1>", lambda e:
+    f_abrir_link("https://code.tutsplus.com/pt/tutorials/mathematical-modules-in-python-random--cms-27738"))
+    img_dicas_2 = Label(v_tela, image = v_img_dica_turtle,bg='#0e2634', cursor="hand2")
+    img_dicas_2.pack()
+    img_dicas_2.place(relx= 0.39, rely=0.23, relwidth= 0.22, relheight= 0.22)
+    img_dicas_2.bind("<Button-1>", lambda e:
+    f_abrir_link("https://acervolima.com/python-turtle-comandos-de-teclado-grafico/"))
+    img_dicas_3 = Label(v_tela, image = v_img_dica_curso_python,bg='#0e2634', cursor="hand2")
+    img_dicas_3.pack()
+    img_dicas_3.place(relx= 0.66, rely=0.23, relwidth= 0.22, relheight= 0.22)
+    img_dicas_3.bind("<Button-1>", lambda e:
+    f_abrir_link("https://www.youtube.com/playlist?list=PLx4x_zx8csUhuVgWfy7keQQAy7t1J35TR"))
+
+    
+    v_tela.mainloop()
     return
 
 
@@ -201,7 +207,7 @@ def f_about(p_largura= 800, p_altura= 600, p_imagem= "\\logo_easylink.png"):
     vs_desc_sobre = Label(
     v_tela_about,
     wraplength=v_largura, 
-    text='''O Software "EasyLink" é um pequeno programa que envolve conteúdos sobre programação, que ainda está em fase de desenvolvimento e teste.
+    text='''O Software "EasyLink" é um programa que envolve conteúdos sobre programação, que ainda está em fase de desenvolvimento e teste.
 O intuito do projeto é dar ao usuário o poder de tirar dúvidas e adquirir conhecimento de forma mais rápida e objetiva, através de links de páginas confiáveis. Nos links são compartilhados ao usuário de forma rápida e clara a explicação do conteúdo desejado, sem risco de vírus em sua máquina, graças à filtragem feita pelo programa.
 Na plataforma contém assuntos sobre uma das principais linguagens de programação, o Python.
 O programa é destinado para quem quer aprender à programar ou ter alguma noção da linguagem que contém no programa.''', 

@@ -1,10 +1,7 @@
-# Programador: Vítor
+# Programador: Vítor Yendre
 # Programa: Janela About
-# Objetivo: Mostrar as informações sobre o EasyLink
-# Destino: EasyLink
 # Versão: Alpha
-# Começo: 03/02/2022
-# Fim: 06/02/2022
+# Data/criação: 03/02/2022
 
 # ativar os comandos do Tkinter
 from tkinter import *
@@ -54,7 +51,7 @@ def f_about(p_largura= 800, p_altura= 600, p_imagem= "/logo_easylink.png"):
     vs_desc_sobre = Label(
     v_tela,
     wraplength=v_largura, 
-    text="O Software 'EasyLink' é um pequeno programa que envolve conteúdos sobre programação, ainda está em fase de desenvolvimento e teste.\nO intuito do projeto é dar ao usuário o poder de tirar duvidas e adquirir conhecimento de forma mais rápida e objetiva, através de links de páginas confiáveis.\nNos links são  compartilhados ao usuário de forma rápida e clara a explicação do conteúdo desejado, sem risco de vírus em sua máquina, graças a filtragem feita pelo programa.\nNa plataforma contém assuntos sobre uma das principais linguagem de programação, o Python.\nO programa é  destinado para quem quer aprender à programar ou ter alguma noção da linguagem que contém do programa.", 
+    text="O Software \"EasyLink\" é um programa que envolve conteúdos sobre programação, ainda está em fase de desenvolvimento e teste.\nO intuito do projeto é dar ao usuário o poder de tirar duvidas e adquirir conhecimento de forma mais rápida e objetiva, através de links de páginas confiáveis.\nNos links são  compartilhados ao usuário de forma rápida e clara a explicação do conteúdo desejado, sem risco de vírus em sua máquina, graças a filtragem feita pelo programa.\nNa plataforma contém assuntos sobre uma das principais linguagem de programação, o Python.\nO programa é  destinado para quem quer aprender à programar ou ter alguma noção da linguagem que contém do programa.", 
     bg='#0e2634', 
     fg="white",
     font="Gabriela 12 ")

@@ -7,5 +7,5 @@ import os
 
 
 if __name__ == '__main__':
-    f_splash_screen()
+    f_splash_screen(p_time= 5000)
     f_dashboard()
